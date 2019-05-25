@@ -54,7 +54,7 @@ function doStuff(){
 // inputImage are declared and deleted elsewhere
 inputImage = new cv.Mat(height, width, cv.CV_8UC4);
 markerImage = new cv.Mat();
-let dictionary = new cv.Dictionary(cv.DICT_6X6_250);
+let dictionary = new cv.Dictionary(cv.DICT_4X4_250);
 let parameter = new cv.DetectorParameters();
 
 parameter.adaptiveThreshWinSizeMin = 23;
