@@ -4,6 +4,7 @@
     html, body {
   overflow: hidden;
   margin: 0; padding: 0;
+  height:100%;
 }
 canvas {
     border: none;
@@ -14,6 +15,23 @@ video {
 .err {
     color: red;
 }
+
+#canvasOutput {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+#showButton {
+height:100%;
+width:100%;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+
 </style>
 </head>
 <body>
@@ -118,9 +136,6 @@ function read(a)
 
 function load()
 {
-    let canvas = document.getElementById('canvasOutput');
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
     let dataURL = canvas.toDataURL();
     qrcode.callback = read;
     qrcode.decode(dataURL);
@@ -130,7 +145,7 @@ function initVideo(ev){
 
     if (!streaming) {
 
-launchFullScreen(document.documentElement); // the whole page
+//launchFullScreen(document.documentElement); // the whole page
 
 
         height = video.videoHeight / (video.videoWidth/width);
@@ -146,15 +161,15 @@ launchFullScreen(document.documentElement); // the whole page
 if((window.innerHeight / window.innerWidth) > ratio){
     console.log("Ratio is greater than camera");
 
-    canvas.style.height = window.innerHeight + "px";
-        canvas.style.width = window.innerHeight * ratio + "px";
+//    canvas.style.height = window.innerHeight + "px";
+  //      canvas.style.width = window.innerHeight * ratio + "px";
 
 } else {
         console.log("Ratio is less than camera");
 
-    canvas.style.width = window.innerWidth + "px";
+ //   canvas.style.width = window.innerWidth + "px";
 
-    canvas.style.height = window.innerWidth * ratio + "px";
+   // canvas.style.height = window.innerWidth * ratio + "px";
 }
 
 //launchFullScreen(document.getElementById("canvasOutput")); // any individual element
