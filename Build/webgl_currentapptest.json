@@ -9,6 +9,6 @@
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "cacheControl": {"default": "must-revalidate"},
 "developmentBuild": false,
-"multithreading": false,
+"multithreading": true,
 "unityVersion": "2019.3.0a3"
 }
