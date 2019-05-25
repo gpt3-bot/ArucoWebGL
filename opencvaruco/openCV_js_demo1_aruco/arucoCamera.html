@@ -64,7 +64,7 @@ loopIndex = setInterval(
             cv.detectMarkers(RgbImage, dictionary, markerCorners, markerIds, parameter);
 
             if (markerIds.rows > 0) {
-            	console.log(markerIds.data32S[0]);
+                console.log(markerIds.data32S[0]);
                 // cv.drawDetectedMarkers(RgbImage, markerCorners, markerIds);
                 // cv.estimatePoseSingleMarkers(markerCorners, 0.1, cameraMatrix, distCoeffs, rvecs, tvecs);
             }
@@ -109,7 +109,7 @@ function load()
 {
     let canvas = document.getElementById('canvasOutput');
     canvas.style.width = window.innerWidth + "px";
-	canvas.style.height = window.innerHeight + "px";
+    canvas.style.height = window.innerHeight + "px";
     let dataURL = canvas.toDataURL();
     qrcode.callback = read;
     qrcode.decode(dataURL);
@@ -126,11 +126,26 @@ function initVideo(ev){
 
         video.setAttribute("width", width);
         video.setAttribute("height", height);
-        
-        		    let canvas = document.getElementById('canvasOutput');
-	    ratio = height/width;
+
+                    let canvas = document.getElementById('canvasOutput');
+        ratio = height/width;
+
+
+if((window.innerHeight / window.innerWidth) > ratio){
+    console.log("Ratio is greater than camera");
+
+    canvas.style.height = window.innerHeight + "px";
+        canvas.style.width = window.innerHeight / ratio + "px";
+
+} else {
+        console.log("Ratio is less than camera");
+
     canvas.style.width = window.innerWidth + "px";
-	canvas.style.height = window.innerWidth * ratio + "px";
+
+    canvas.style.height = window.innerWidth * ratio + "px";
+}
+
+    
 
 
         streaming = true;
