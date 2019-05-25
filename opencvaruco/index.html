@@ -147,7 +147,7 @@ if((window.innerHeight / window.innerWidth) > ratio){
     console.log("Ratio is greater than camera");
 
     canvas.style.height = window.innerHeight + "px";
-        canvas.style.width = window.innerHeight / ratio + "px";
+        canvas.style.width = window.innerHeight * ratio + "px";
 
 } else {
         console.log("Ratio is less than camera");
