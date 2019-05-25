@@ -64,8 +64,7 @@ loopIndex = setInterval(
             cv.detectMarkers(RgbImage, dictionary, markerCorners, markerIds, parameter);
 
             if (markerIds.rows > 0) {
-                console.log(markerIds.data32S[0]);
-                // cv.drawDetectedMarkers(RgbImage, markerCorners, markerIds);
+                cv.drawDetectedMarkers(RgbImage, markerCorners, markerIds);
                 // cv.estimatePoseSingleMarkers(markerCorners, 0.1, cameraMatrix, distCoeffs, rvecs, tvecs);
             }
             cv.imshow("canvasOutput", RgbImage);
