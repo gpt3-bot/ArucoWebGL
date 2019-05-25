@@ -141,7 +141,7 @@ function initVideo(ev){
         ratio = height/width;
 
 
-if((window.innerHeight / window.innerWidth) > ratio){
+if((window.innerHeight / window.innerWidth) < ratio){
     console.log("Ratio is greater than camera");
 
     canvas.style.height = window.innerHeight + "px";
