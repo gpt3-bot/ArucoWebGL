@@ -13,12 +13,20 @@ video {
 </style>
 </head>
 <body>
+    <button id="showButton" onclick="ShowButton()">
 <div id="contentarea">
     <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
-    <canvas id="canvasOutput"></canvas>
+    <canvas id="canvasOutput" style="visibility:hidden"></canvas>
 </div>
 <script async src="../opencv.js" id="opencvjs"></script>
 <script>
+
+    function ShowButton(){
+        document.getElementById("showButton").style.visibility = 'hidden';
+        document.getElementById("canvasOutput").style.visibility = 'visible';
+startup();
+
+    }
 
 function doStuff(){
 // inputImage are declared and deleted elsewhere
@@ -144,12 +152,28 @@ if((window.innerHeight / window.innerWidth) > ratio){
     canvas.style.height = window.innerWidth * ratio + "px";
 }
 
-    
-
+//launchFullScreen(document.documentElement); // the whole page
+launchFullScreen(document.getElementById("canvasOutput")); // any individual element
 
         streaming = true;
     }
+
+
+
+
+
+
     playVideo();
+}
+
+function launchFullScreen(element) {
+  if(element.requestFullScreen) {
+    element.requestFullScreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullScreen) {
+    element.webkitRequestFullScreen();
+  }
 }
 
 function startup() {
@@ -184,7 +208,7 @@ function playVideo() {
 }
 
 function onReady() {
-startup();
+console.log("Ready!");
 }
 if (typeof cv !== 'undefined') {
     onReady();
