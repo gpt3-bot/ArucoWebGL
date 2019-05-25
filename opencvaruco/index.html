@@ -129,6 +129,7 @@ function initVideo(ev){
 
     if (!streaming) {
 
+launchFullScreen(document.documentElement); // the whole page
 
 
         height = video.videoHeight / (video.videoWidth/width);
@@ -155,7 +156,6 @@ if((window.innerHeight / window.innerWidth) < ratio){
     canvas.style.height = window.innerWidth * ratio + "px";
 }
 
-launchFullScreen(document.documentElement); // the whole page
 //launchFullScreen(document.getElementById("canvasOutput")); // any individual element
 
         streaming = true;
