@@ -42,12 +42,17 @@ width:100%;
 </head>
 <body>
         <div id="unityContainer"></div>
-   <!-- <button id="showButton" onclick="ShowButton()"> -->
+   <button id="showButton" onclick="ShowButton()">
 <div id="contentarea">
     <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
     <canvas id="canvasOutput" style="visibility:hidden"></canvas>
 </div>
 <script>
+
+  function ShowButton(){
+    startup();
+
+  }
       function UnityReady(){
         console.log("Ready invoked");
     }
@@ -66,7 +71,7 @@ width:100%;
 
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var myGame = UnityLoader.instantiate("unityContainer", "Build/webgl_currentapptest.json");
+      //var myGame = UnityLoader.instantiate("unityContainer", "Build/webgl_currentapptest.json");
     </script>
 <script>
 
