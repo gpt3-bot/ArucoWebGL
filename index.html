@@ -51,7 +51,7 @@ width:100%;
 
   function ShowButton(){
     startup();
-
+console.log("Showbutton called!");
   }
       function UnityReady(){
         console.log("Ready invoked");
@@ -188,25 +188,21 @@ function initVideo(ev){
 if((window.innerHeight / window.innerWidth) > ratio){
     console.log("Ratio is greater than camera");
 
-//    canvas.style.height = window.innerHeight + "px";
-  //      canvas.style.width = window.innerHeight * ratio + "px";
+    canvas.style.height = window.innerHeight + "px";
+        canvas.style.width = window.innerHeight * ratio + "px";
 
 } else {
         console.log("Ratio is less than camera");
 
- //   canvas.style.width = window.innerWidth + "px";
+   canvas.style.width = window.innerWidth + "px";
 
-   // canvas.style.height = window.innerWidth * ratio + "px";
+    canvas.style.height = window.innerWidth * ratio + "px";
 }
 
 //launchFullScreen(document.getElementById("canvasOutput")); // any individual element
 
         streaming = true;
     }
-
-
-
-
 
 
     playVideo();
@@ -247,6 +243,7 @@ function playVideo() {
         return;
     }
     try {
+      console.log("Doing stuff");
         doStuff();
     } catch(err) {
         console.log("Error: " + err);
