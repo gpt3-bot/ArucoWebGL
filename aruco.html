@@ -32,10 +32,11 @@ width:100%;
 }
 
 #contentarea, #unityContainer {
-  position:fixed;
+  min-width: 100%; 
+  min-height: 100%;
   width: 100%;
   height: 100%;
-  margin: 0  
+  margin: 0 ;
   z-index:100;
 }
 
@@ -123,6 +124,7 @@ loopIndex = setInterval(
 
             if (markerIds.rows > 0) {
                 console.log(markerIds.data32S[0]);
+                myGame.SendMessage('GameManager', 'HandleMarkerDetected', markerIds.data32S[0]);
                 cv.drawDetectedMarkers(RgbImage, markerCorners, markerIds);
             }
             cv.imshow("canvasOutput", RgbImage);
