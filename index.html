@@ -6,6 +6,9 @@
     <title>Unity WebGL Player | SafetyArucoGame</title>
     <script src="Build/UnityLoader.js"></script>
     <script>
+      function UnityReady(){
+        console.log("UnityReady called");
+      }
       UnityLoader.instantiate("unityContainer", "Build/webgl_currentapptest.json");
     </script>
   </head>
