@@ -47,27 +47,30 @@ width:100%;
     <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
     <canvas id="canvasOutput" style="visibility:hidden"></canvas>
 </div>
+<script>
+      function UnityReady(){
+        console.log("Ready invoked");
+    }
+    
+    function UnityStartCamera(){
+        console.log("Showing camera");
+        startup();
+    }
+
+        function UnityHideCamera(){
+        console.log("Hiding camera");
+    }
+  </script>
+
+<script async src="opencv.js" id="opencvjs"></script>
+
     <script src="Build/UnityLoader.js"></script>
     <script>
       var myGame = UnityLoader.instantiate("unityContainer", "Build/webgl_currentapptest.json");
     </script>
-<script async src="opencv.js" id="opencvjs"></script>
 <script>
 
-    function ShowButton(){
-        document.getElementById("showButton").style.visibility = 'hidden';
-        document.getElementById("canvasOutput").style.visibility = 'visible';
-        startup();
-    }
 
-    function UnityReady(){
-        console.log("Ready invoked");
-    }
-    
-    function StartCamera(){
-        console.log("Showing camera");
-        startup();
-    }
     
 function doStuff(){
 // inputImage are declared and deleted elsewhere
