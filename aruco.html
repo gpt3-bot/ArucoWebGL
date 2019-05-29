@@ -83,10 +83,10 @@ function doStuff(){
 // inputImage are declared and deleted elsewhere
 inputImage = new cv.Mat(height, width, cv.CV_8UC4);
 markerImage = new cv.Mat();
-let dictionary = new cv.Dictionary(cv.DICT_4X4_250);
+let dictionary = new cv.Dictionary(cv.DICT_4X4_100);
 let parameter = new cv.DetectorParameters();
 
-parameter.adaptiveThreshWinSizeMin = 23;
+parameter.adaptiveThreshWinSizeMin = 3;
 parameter.adaptiveThreshWinSizeMax = 23;
 parameter.adaptiveThreshWinSizeStep = 10,
 parameter.adaptiveThreshConstant = 7;
@@ -98,14 +98,14 @@ parameter.minDistanceToBorder = 3;
 parameter.minMarkerDistanceRate = 0.05;
 parameter.cornerRefinementMethod = cv.CORNER_REFINE_NONE;
 parameter.cornerRefinementWinSize = 5;
-parameter.cornerRefinementMaxIterations = 30;
+parameter.cornerRefinementMaxIterations = 25;
 parameter.cornerRefinementMinAccuracy = 0.1;
 parameter.markerBorderBits = 1;
-parameter.perspectiveRemovePixelPerCell = 2;
+parameter.perspectiveRemovePixelPerCell = .2;
 parameter.perspectiveRemoveIgnoredMarginPerCell = 0.13;
 parameter.maxErroneousBitsInBorderRate = 0.35;
 parameter.minOtsuStdDev = 5.0;
-parameter.errorCorrectionRate = 0.6;
+parameter.errorCorrectionRate = 0.35;
 
 markerIds = new cv.Mat();
 markerCorners  = new cv.MatVector();
