@@ -159,7 +159,7 @@ loopIndex = setInterval(
             if (markerIds.rows > 0) {
                 console.log(markerIds.data32S[0]);
                 myGame.SendMessage('GameManager', 'HandleMarkerDetected', markerIds.data32S[0]);
-                cv.drawDetectedMarkers(RgbImage, markerCorners, markerIds);
+                //cv.drawDetectedMarkers(RgbImage, markerCorners, markerIds);
             }
             cv.imshow("canvasOutput", RgbImage);
             // cv.imshow("canvasOutput", inputImage);
