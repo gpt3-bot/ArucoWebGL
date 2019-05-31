@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <head>
 <style>
+
     html, body {
   overflow: hidden;
   margin: 0; padding: 0;
   height:100%;
 }
+
 canvas {
     border: none;
 }
-video {
+
+#video {
     display:none;
 }
+
 .err {
     color: red;
+}
+
+#tutorialvideo
+{
+	z-index:1000;
+	position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
 }
 
 #canvasOutput {
@@ -46,6 +60,7 @@ width:100%;
   <!--  <button id="showButton" onclick="ShowButton()"> -->
 <div id="contentarea">
           <div id="unityContainer"></div>
+    <video id="tutorialvideo" playsinline="true"></video>
     <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
     <canvas id="canvasOutput"></canvas>
 </div>
@@ -141,6 +156,7 @@ let streaming = false;
 
 // Some HTML elements we need to configure.
 let video = null;
+let tutorialvideo = null;
 let stream = null;
 
 let loopIndex = 0;
@@ -187,20 +203,19 @@ function initVideo(ev){
                     let canvas = document.getElementById('canvasOutput');
 
         ratio = height/width;
-
-console.log("Ratio is " + ratio);
+ 
+		console.log("Ratio is " + ratio);
 
 
    canvas.style.width = window.innerHeight / ratio + "px";
 
    console.log("Setting width to : " + window.innerHeight / ratio + "px" + " while height is " + window.innerHeight + "px");
 
-console.log("Aspect ratio of camera is "+ ratio);
+	console.log("Aspect ratio of camera is "+ ratio);
 
     canvas.style.height = window.innerHeight + "px";
-    console.log("Aspect ratio of canvas is now " + canvas.style.height / canvas.style.width);
 
-//launchFullScreen(document.getElementById("canvasOutput")); // any individual element
+    console.log("Aspect ratio of canvas is now " + canvas.style.height / canvas.style.width);
 
         streaming = true;
     }
@@ -217,6 +232,19 @@ function launchFullScreen(element) {
   } else if(element.webkitRequestFullScreen) {
     element.webkitRequestFullScreen();
   }
+}
+
+function UnityPlayVideo()
+{
+   
+	tutorialvideo.play();
+	tutorialvideo.setAttribute('display', 'inherit');
+
+}
+
+function handleTutorialFinished(){
+	console.log("Tutorial finished!");
+	video.setAttribute('display', 'none');
 }
 
 function startup() {
@@ -252,7 +280,12 @@ function playVideo() {
 }
 
 function onReady() {
-console.log("Ready!");
+	console.log("Ready!");
+
+// init our tutorial video
+    tutorialvideo = document.getElementById("tutorialvideo");
+	tutorialvideo.addEventListener("ended", handleTutorialFinished, false);
+
 }
 if (typeof cv !== 'undefined') {
     onReady();
