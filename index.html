@@ -185,22 +185,20 @@ function initVideo(ev){
         video.setAttribute("height", height);
 
                     let canvas = document.getElementById('canvasOutput');
+
         ratio = height/width;
 
+console.log("Ratio is " + ratio);
 
-if((window.innerHeight / window.innerWidth) > ratio){
-    console.log("Ratio is greater than camera");
+
+   canvas.style.width = window.innerHeight / ratio + "px";
+
+   console.log("Setting width to : " + window.innerHeight / ratio + "px" + " while height is " + window.innerHeight + "px");
+
+console.log("Aspect ratio of camera is "+ ratio);
 
     canvas.style.height = window.innerHeight + "px";
-        canvas.style.width = window.innerHeight * ratio + "px";
-
-} else {
-        console.log("Ratio is less than camera");
-
-   canvas.style.width = window.innerWidth + "px";
-
-    canvas.style.height = window.innerWidth * ratio + "px";
-}
+    console.log("Aspect ratio of canvas is now " + canvas.style.height / canvas.style.width);
 
 //launchFullScreen(document.getElementById("canvasOutput")); // any individual element
 
