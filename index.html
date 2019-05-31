@@ -94,6 +94,15 @@ console.log("Showbutton called!");
         function UnityHideCamera(){
         console.log("Hiding camera");
     }
+
+    function UnityPlayVideo()
+{
+   console.log("UnityPlayVideo called");
+   var tutorialvideocontainer = document.getElementById("tutorialvideocontainer");
+	tutorialvideo.play();
+	tutorialvideocontainer.setAttribute('display', 'block');
+
+}
   </script>
 
 <script async src="opencv.js" id="opencvjs"></script>
@@ -244,15 +253,6 @@ function launchFullScreen(element) {
   } else if(element.webkitRequestFullScreen) {
     element.webkitRequestFullScreen();
   }
-}
-
-function UnityPlayVideo()
-{
-   console.log("UnityPlayVideo called");
-   var tutorialvideocontainer = document.getElementById("tutorialvideocontainer");
-	tutorialvideo.play();
-	tutorialvideocontainer.setAttribute('display', 'block');
-
 }
 
 function handleTutorialFinished(){
