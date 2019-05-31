@@ -20,7 +20,7 @@ canvas {
     color: red;
 }
 
-#tutorialvideo
+#tutorialvideocontainer
 {
 	    display:none;
 	z-index:100;
@@ -61,7 +61,9 @@ width:100%;
   <!--  <button id="showButton" onclick="ShowButton()"> -->
 <div id="contentarea">
           <div id="unityContainer"></div>
-    <video id="tutorialvideo" playsinline="true"></video>
+<div id="tutorialvideocontainer">
+    <video id="tutorialvideo" source="/StreamingAssets/Sequence_1920x1080.mp4" playsinline="true"></video>
+</div>
     <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
     <canvas id="canvasOutput"></canvas>
 </div>
@@ -238,14 +240,16 @@ function launchFullScreen(element) {
 function UnityPlayVideo()
 {
    console.log("UnityPlayVideo called");
+   var tutorialvideocontainer = document.getElementById("tutorialvideocontainer");
 	tutorialvideo.play();
-	tutorialvideo.setAttribute('display', 'block');
+	tutorialvideocontainer.setAttribute('display', 'block');
 
 }
 
 function handleTutorialFinished(){
 	console.log("Tutorial finished!");
-	video.setAttribute('display', 'none');
+	   var tutorialvideocontainer = document.getElementById("tutorialvideocontainer");
+	tutorialvideocontainer.setAttribute('display', 'none');
 }
 
 function startup() {
