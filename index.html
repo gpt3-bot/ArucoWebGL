@@ -21,9 +21,7 @@ canvas {
 }
 
 #tutorialvideocontainer
-{
-	    display:none;
-	z-index:100;
+{	z-index:100;
 	position: fixed;
   right: 0;
   bottom: 0;
@@ -71,7 +69,7 @@ width:100%;
 <div id="contentarea">
           <div id="unityContainer"></div>
 <div id="tutorialvideocontainer">
-    <video id="tutorialvideo" source="/StreamingAssets/Sequence_1920x1080.mp4" playsinline="true"></video>
+    <video id="tutorialvideo" src="StreamingAssets/Sequence_1920x1080.mp4" playsinline="true" type="video/mp4""></video>
 </div>
     <video id="video" autoplay="true" playsinline="true" muted="true">Your browser does not support the video tag.</video>
     <canvas id="canvasOutput"></canvas>
@@ -299,6 +297,8 @@ function onReady() {
 // init our tutorial video
     tutorialvideo = document.getElementById("tutorialvideo");
 	tutorialvideo.addEventListener("ended", handleTutorialFinished, false);
+		tutorialvideocontainer.setAttribute('display', 'none');
+
 
 }
 if (typeof cv !== 'undefined') {
