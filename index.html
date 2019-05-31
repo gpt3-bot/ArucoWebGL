@@ -22,7 +22,8 @@ canvas {
 
 #tutorialvideo
 {
-	z-index:1000;
+	    display:none;
+	z-index:100;
 	position: fixed;
   right: 0;
   bottom: 0;
@@ -236,9 +237,9 @@ function launchFullScreen(element) {
 
 function UnityPlayVideo()
 {
-   
+   console.log("UnityPlayVideo called");
 	tutorialvideo.play();
-	tutorialvideo.setAttribute('display', 'inherit');
+	tutorialvideo.setAttribute('display', 'block');
 
 }
 
