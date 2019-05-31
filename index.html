@@ -98,7 +98,7 @@ console.log("Showbutton called!");
    console.log("UnityPlayVideo called");
    var tutorialvideocontainer = document.getElementById("tutorialvideocontainer");
 	tutorialvideo.play();
-	tutorialvideocontainer.setAttribute('display', 'block');
+	tutorialvideocontainer.style.display = 'block';
 
 }
   </script>
@@ -256,7 +256,7 @@ function launchFullScreen(element) {
 function handleTutorialFinished(){
 	console.log("Tutorial finished!");
 	   var tutorialvideocontainer = document.getElementById("tutorialvideocontainer");
-	tutorialvideocontainer.setAttribute('display', 'none');
+	tutorialvideocontainer.style.display = 'none';
 }
 
 function startup() {
@@ -297,7 +297,7 @@ function onReady() {
 // init our tutorial video
     tutorialvideo = document.getElementById("tutorialvideo");
 	tutorialvideo.addEventListener("ended", handleTutorialFinished, false);
-		tutorialvideocontainer.setAttribute('display', 'none');
+	tutorialvideocontainer.style.display = 'none';
 
 
 }
