@@ -347,8 +347,8 @@
 			this.patternMarkers[id] = obj = {
 				inPrevious: false,
 				inCurrent: false,
-                matrix: new Float64Array(12),
-                matrixGL_RH: new Float64Array(12),
+        matrix: new Float64Array(12),
+        matrixGL_RH: new Float64Array(12),
 				markerWidth: markerWidth || this.defaultMarkerWidth
 			};
 		}
@@ -376,8 +376,8 @@
 			this.barcodeMarkers[id] = obj = {
 				inPrevious: false,
 				inCurrent: false,
-                matrix: new Float64Array(12),
-                matrixGL_RH: new Float64Array(12),
+        matrix: new Float64Array(12),
+        matrixGL_RH: new Float64Array(12),
 				markerWidth: markerWidth || this.defaultMarkerWidth
 			};
 		}
@@ -405,7 +405,8 @@
 			this.nftMarkers[id] = obj = {
 				inPrevious: false,
 				inCurrent: false,
-				matrix: new Float32Array(12),
+				matrix: new Float64Array(12),
+				matrixGL_RH: new Float64Array(12),
 				markerWidth: markerWidth || this.defaultMarkerWidth
 			};
 		}
@@ -563,11 +564,11 @@
 	 * @param {Float64Array} dst	The float array to populate with the 3x4 marker transformation matrix
 	 * @return	{Float64Array} The dst array.
 	 */
-	 ARController.prototype.getTransMatSquare = function(markerUID, markerWidth, dst) {
- 		artoolkit.getTransMatSquare(this.id, markerUID, markerWidth);
- 		dst.set(this.marker_transform_mat);
- 		return dst;
- 	};
+	ARController.prototype.getTransMatSquare = function(markerUID, markerWidth, dst) {
+		artoolkit.getTransMatSquare(this.id, markerUID, markerWidth);
+		dst.set(this.marker_transform_mat);
+		return dst;
+	};
 
 	/**
 	 * Populates the provided float array with the current transformation for the specified marker, using
@@ -664,45 +665,45 @@
  @param {number} [scale] The scale for the transform.
 */
 ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
- {
-		 var m_modelview;
-		 if(glRhMatrix == undefined)
-				 m_modelview = new Float64Array(16);
-		 else
-				 m_modelview = glRhMatrix;
+{
+    var m_modelview;
+    if(glRhMatrix == undefined)
+        m_modelview = new Float64Array(16);
+    else
+        m_modelview = glRhMatrix;
 
-		 // x
-		 m_modelview[0] = glMatrix[0];
-		 m_modelview[4] = glMatrix[4];
-		 m_modelview[8] = glMatrix[8];
-		 m_modelview[12] = glMatrix[12];
-		 // y
-		 m_modelview[1] = -glMatrix[1];
-		 m_modelview[5] = -glMatrix[5];
-		 m_modelview[9] = -glMatrix[9];
-		 m_modelview[13] = -glMatrix[13];
-		 // z
-		 m_modelview[2] = -glMatrix[2];
-		 m_modelview[6] = -glMatrix[6];
-		 m_modelview[10] = -glMatrix[10];
-		 m_modelview[14] = -glMatrix[14];
+    // x
+    m_modelview[0] = glMatrix[0];
+    m_modelview[4] = glMatrix[4];
+    m_modelview[8] = glMatrix[8];
+    m_modelview[12] = glMatrix[12];
+    // y
+    m_modelview[1] = -glMatrix[1];
+    m_modelview[5] = -glMatrix[5];
+    m_modelview[9] = -glMatrix[9];
+    m_modelview[13] = -glMatrix[13];
+    // z
+    m_modelview[2] = -glMatrix[2];
+    m_modelview[6] = -glMatrix[6];
+    m_modelview[10] = -glMatrix[10];
+    m_modelview[14] = -glMatrix[14];
 
-		 // 0 0 0 1
-		 m_modelview[3] = 0;
-		 m_modelview[7] = 0;
-		 m_modelview[11] = 0;
-		 m_modelview[15] = 1;
+    // 0 0 0 1
+    m_modelview[3] = 0;
+    m_modelview[7] = 0;
+    m_modelview[11] = 0;
+    m_modelview[15] = 1;
 
-		 if (scale != undefined && scale !== 0.0) {
-	 m_modelview[12] *= scale;
-	 m_modelview[13] *= scale;
-	 m_modelview[14] *= scale;
- }
+    if (scale != undefined && scale !== 0.0) {
+		m_modelview[12] *= scale;
+		m_modelview[13] *= scale;
+		m_modelview[14] *= scale;
+	}
 
-		 glRhMatrix = m_modelview;
+    glRhMatrix = m_modelview;
 
-		 return glRhMatrix;
-}
+    return glRhMatrix;
+  }
 	/**
 		This is the core ARToolKit marker detection function. It calls through to a set of
 		internal functions to perform the key marker detection steps of binarization and
@@ -733,7 +734,7 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
         	arGetDetectedMarkerCount, but the current name lives on for historical reasons.
     */
 	ARController.prototype.getMarkerNum = function() {
-		return artoolkit.getMarkerNum(this.id);
+			return artoolkit.getMarkerNum(this.id);
 	};
 
 	/**
@@ -853,8 +854,8 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	 * @return {Float64Array} The 16-element WebGL camera matrix for the ARController camera parameters.
 	 */
 	ARController.prototype.getCameraMatrix = function() {
-		return this.camera_mat;
-	};
+ 		return this.camera_mat;
+ 	};
 
 	/**
 		Returns the shared ARToolKit 3x4 marker transformation matrix, used for passing and receiving
@@ -876,9 +877,9 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	 * @param {number} debug		true to enable debug mode, false to disable debug mode
 	 * @see				getDebugMode()
 	 */
-	ARController.prototype.setDebugMode = function(mode) {
-		return artoolkit.setDebugMode(this.id, mode);
-	};
+	 ARController.prototype.setDebugMode = function(mode) {
+ 		return artoolkit.setDebugMode(this.id, mode);
+ 	};
 
 	/**
 	 * Returns whether debug mode is currently enabled.
@@ -886,8 +887,8 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	 * @see				setDebugMode()
 	 */
 	ARController.prototype.getDebugMode = function() {
-		return artoolkit.getDebugMode(this.id);
-	};
+ 		return artoolkit.getDebugMode(this.id);
+ 	};
 
 	/**
 		Returns the Emscripten HEAP offset to the debug processing image used by ARToolKit.
@@ -896,7 +897,7 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	*/
 	ARController.prototype.getProcessingImage = function() {
 		return artoolkit.getProcessingImage(this.id);
-	}
+	};
 
 	/**
 		Sets the logging level to use by ARToolKit.
@@ -1165,7 +1166,14 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	*/
 	ARController.prototype.debugDraw = function() {
 		var debugBuffer = new Uint8ClampedArray(Module.HEAPU8.buffer, this._bwpointer, this.framesize);
-		var id = new ImageData(debugBuffer, this.videoWidth, this.videoHeight);
+		var id = new ImageData(new Uint8ClampedArray(this.canvas.width*this.canvas.height*4), this.canvas.width, this.canvas.height);
+		for (var i=0, j=0; i<debugBuffer.length; i++, j+=4) {
+			var v = debugBuffer[i];
+			id.data[j+0] = v;
+			id.data[j+1] = v;
+			id.data[j+2] = v;
+			id.data[j+3] = 255;
+		}
 		this.ctx.putImageData(id, 0, 0)
 
 		//Debug Luma
@@ -1235,29 +1243,31 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 			this.ctx.drawImage(image, 0, 0, this.canvas.width, this.canvas.height); // draw video
 		}
 
-			this.ctx.restore();
-			var imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-			var data = imageData.data;  // this is of type Uint8ClampedArray: The Uint8ClampedArray typed array represents an array of 8-bit unsigned integers clamped to 0-255 (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray)
+		this.ctx.restore();
 
-        //Here we have access to the unmodified video image. We now need to add the videoLuma chanel to be able to serve the underlying ARTK API
-        if(this.videoLuma) {
-            var q = 0;
-            //Create luma from video data assuming Pixelformat AR_PIXEL_FORMAT_RGBA (ARToolKitJS.cpp L: 43)
+	var imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+	var data = imageData.data;  // this is of type Uint8ClampedArray: The Uint8ClampedArray typed array represents an array of 8-bit unsigned integers clamped to 0-255 (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray)
 
-            for(var p=0; p < this.videoSize; p++){
-                var r = data[q+0], g = data[q+1], b = data[q+2];
-                // videoLuma[p] = (r+r+b+g+g+g)/6;         // https://stackoverflow.com/a/596241/5843642
-                this.videoLuma[p] = (r+r+r+b+g+g+g+g)>>3;
-                q += 4;
-            }
-        }
+			//Here we have access to the unmodified video image. We now need to add the videoLuma chanel to be able to serve the underlying ARTK API
+			if(this.videoLuma) {
+					var q = 0;
+					//Create luma from video data assuming Pixelformat AR_PIXEL_FORMAT_RGBA (ARToolKitJS.cpp L: 43)
 
-		if (this.dataHeap) {
-			this.dataHeap.set( data );
-			return true;
-		}
-		return false;
-	};
+					for(var p=0; p < this.videoSize; p++){
+							var r = data[q+0], g = data[q+1], b = data[q+2];
+							// videoLuma[p] = (r+r+b+g+g+g)/6;         // https://stackoverflow.com/a/596241/5843642
+							this.videoLuma[p] = (r+r+r+b+g+g+g+g)>>3;
+							q += 4;
+					}
+			}
+
+	if (this.dataHeap) {
+		this.dataHeap.set( data );
+		return true;
+	}
+	return false;
+};
+
 
 	ARController.prototype._debugMarker = function(marker) {
 		var vertex, pos;
@@ -1373,7 +1383,7 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
             if(window.URL.createObjectURL) {
                 //Need to add try-catch because iOS 11 fails to createObjectURL from stream. As this is deprecated  we should remove this soon
                 try {
-                    video.src = window.URL.createObjectURL(stream); // DEPRECATED: this feature is in the process to being deprecated
+                    video.srcObject = stream; // DEPRECATED: this feature is in the process to being deprecated
                 }
                 catch (ex) {
                     // Nothing todo, the purpose of this is to remove an error from the console on iOS 11
@@ -1839,8 +1849,12 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	function loadCamera(url, callback, errorCallback) {
 		var filename = '/camera_param_' + camera_count++;
 		var writeCallback = function(errorCode) {
-            var id = Module._loadCamera(filename);
-            if (callback) callback(id);
+			if (!Module._loadCamera) {
+	if (callback) callback(id);					setTimeout(writeCallback, 10);
+	} else {
+		var id = Module._loadCamera(filename);
+		if (callback) callback(id);
+	}
 		};
 		if (typeof url === 'object') { // Maybe it's a byte array
 			writeByteArrayToFS(filename, url, writeCallback);
@@ -1909,19 +1923,14 @@ ARController.prototype.arglCameraViewRHf = function(glMatrix, glRhMatrix, scale)
 	window.ARController = ARController;
 	window.ARCameraParam = ARCameraParam;
 
-
 	if (window.Module) {
-		window.Module.onRuntimeInitialized = function() {
-	           runWhenLoaded();
-	           var event = new Event('artoolkit-loaded');
-	           window.dispatchEvent(event);
-	       }
+		runWhenLoaded();
 	} else {
-	       window.Module = {
-	           onRuntimeInitialized: function() {
-	               runWhenLoaded();
-	           }
-	       };
-	   }
+		window.Module = {
+			onRuntimeInitialized: function() {
+				runWhenLoaded();
+			}
+		};
+	}
 
 })();

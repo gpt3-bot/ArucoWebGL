@@ -200,7 +200,7 @@ extern "C" {
 		KpmResult *kpmResult = NULL;
 		int kpmResultNum = -1;
 
-        kpmMatching( arc->kpmHandle, arc->videoFrame );
+        kpmMatching( arc->kpmHandle, arc->videoLuma );
         kpmGetResult( arc->kpmHandle, &kpmResult, &kpmResultNum );
         return kpmResultNum;
 	}
@@ -1047,6 +1047,7 @@ extern "C" {
 			frameMalloc["framesize"] = $2;
 			frameMalloc["camera"] = $3;
 			frameMalloc["transform"] = $4;
+			frameMalloc["videoLumaPointer"] = $5;
 		},
 			arc->id,
 			arc->videoFrame,
