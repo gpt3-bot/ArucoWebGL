@@ -1,0 +1,52 @@
+{
+	"missions": [
+		{
+			"markerId": 0,
+			"name": "",
+			"text": "Find the nearest\n<color=\"red\">EMERGENCY EXIT</color>",
+			"zone": "",
+			"missionType": 0,
+			"possibleCompletionMarkers": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+			"missionCompletionMarkerNumber": 0,
+			"missionStartTime": 0.0,
+			"missionEndTime": 0.0,
+			"missionElapsedTime": 0.0
+		},
+		{
+			"markerId": 0,
+			"name": "",
+			"text": "Find the nearest\n<color=\"red\">FIRST AID KIT</color>",
+			"zone": "",
+			"missionType": 3,
+			"possibleCompletionMarkers": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+			"missionCompletionMarkerNumber": 0,
+			"missionStartTime": 0.0,
+			"missionEndTime": 0.0,
+			"missionElapsedTime": 0.0
+		},
+		{
+			"markerId": 0,
+			"name": "",
+			"text": "Find the nearest\n<color=\"red\">FIRE EXTINGUISHER</color>",
+			"zone": "",
+			"missionType": 1,
+			"possibleCompletionMarkers": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+			"missionCompletionMarkerNumber": 0,
+			"missionStartTime": 0.0,
+			"missionEndTime": 0.0,
+			"missionElapsedTime": 0.0
+		},
+		{
+			"markerId": 0,
+			"name": "",
+			"text": "Find the nearest\n<color=\"green\">EYEWASH STATION</color>",
+			"zone": "",
+			"missionType": 2,
+			"possibleCompletionMarkers": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+			"missionCompletionMarkerNumber": 0,
+			"missionStartTime": 0.0,
+			"missionEndTime": 0.0,
+			"missionElapsedTime": 0.0
+		}
+	]
+}
