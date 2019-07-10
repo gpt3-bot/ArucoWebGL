@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Homemade+Apple|Montez|Sacramento');
+
+body {
+  background: url(map.jpeg);
+  background-size: cover;
+  text-align: center;
+}
+
+#comp {
+  margin-top: 20%;
+  width: 90%;
+  filter: drop-shadow(2px 2px rgba(58, 13, 13, 0.582));
+}
+
+p {
+  font-family: 'Sacramento', cursive;
+  font-size: 100px;
+  font-weight: bold;
+  color: rgba(59, 3, 3, 0.719);
+}
+
+#degree {
+  display: block;
+}
